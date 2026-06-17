@@ -1,0 +1,67 @@
+<svg width="512" height="512" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>IP Kalkulator</title>
+  <desc>Ikona programu IP Kalkulator — tarcza sieciowa z adresem IP i symbolem kalkulatora</desc>
+
+  <defs>
+    <style>
+      .icon-bg { fill: #1a2b4a; }
+      .icon-shield { fill: #1e3a6e; stroke: #3b82f6; stroke-width: 3; }
+      .icon-grid { stroke: #3b82f6; stroke-width: 1.2; fill: none; opacity: 0.35; }
+      .icon-text { font-family: 'Courier New', monospace; fill: #60a5fa; font-weight: 700; }
+      .icon-sub  { font-family: 'Courier New', monospace; fill: #93c5fd; font-weight: 400; }
+      .icon-calc { fill: #2563eb; stroke: #60a5fa; stroke-width: 2.5; }
+    </style>
+  </defs>
+
+  <!-- Outer rounded square background -->
+  <rect x="60" y="60" width="560" height="560" rx="96" class="icon-bg"/>
+
+  <!-- Grid overlay -->
+  <line x1="60" y1="200" x2="620" y2="200" class="icon-grid"/>
+  <line x1="60" y1="340" x2="620" y2="340" class="icon-grid"/>
+  <line x1="60" y1="480" x2="620" y2="480" class="icon-grid"/>
+  <line x1="200" y1="60" x2="200" y2="620" class="icon-grid"/>
+  <line x1="340" y1="60" x2="340" y2="620" class="icon-grid"/>
+  <line x1="480" y1="60" x2="480" y2="620" class="icon-grid"/>
+
+  <!-- Network node dots -->
+  <circle cx="200" cy="200" r="5" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="340" cy="200" r="5" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="480" cy="200" r="5" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="200" cy="480" r="5" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="340" cy="480" r="5" fill="#3b82f6" opacity="0.5"/>
+  <circle cx="480" cy="480" r="5" fill="#3b82f6" opacity="0.5"/>
+
+  <!-- Shield shape -->
+  <path d="M340 110 L530 190 L530 350 Q530 490 340 570 Q150 490 150 350 L150 190 Z" class="icon-shield"/>
+
+  <!-- Inner shield -->
+  <path d="M340 148 L500 215 L500 355 Q500 462 340 530 Q180 462 180 355 L180 215 Z" fill="#1e3a6e" stroke="#60a5fa" stroke-width="1" opacity="0.6"/>
+
+  <!-- IP Address text -->
+  <text x="340" y="288" text-anchor="middle" font-size="52" class="icon-text">192.168</text>
+  <text x="340" y="348" text-anchor="middle" font-size="52" class="icon-text">.1.0</text>
+
+  <!-- Subnet mask -->
+  <text x="340" y="396" text-anchor="middle" font-size="28" class="icon-sub">/24</text>
+
+  <!-- Accent line -->
+  <rect x="305" y="404" width="70" height="6" rx="3" fill="#fbbf24" opacity="0.7"/>
+
+  <!-- Calculator -->
+  <rect x="430" y="428" width="68" height="68" rx="10" class="icon-calc"/>
+  <rect x="440" y="438" width="14" height="10" rx="2" fill="#93c5fd"/>
+  <rect x="458" y="438" width="14" height="10" rx="2" fill="#93c5fd"/>
+  <rect x="476" y="438" width="14" height="10" rx="2" fill="#93c5fd"/>
+  <rect x="440" y="453" width="14" height="10" rx="2" fill="#60a5fa"/>
+  <rect x="458" y="453" width="14" height="10" rx="2" fill="#60a5fa"/>
+  <rect x="476" y="453" width="14" height="10" rx="2" fill="#60a5fa"/>
+  <rect x="440" y="468" width="14" height="10" rx="2" fill="#60a5fa"/>
+  <rect x="458" y="468" width="14" height="10" rx="2" fill="#fbbf24"/>
+  <rect x="476" y="468" width="14" height="24" rx="2" fill="#22d3ee"/>
+  <rect x="440" y="483" width="14" height="10" rx="2" fill="#60a5fa"/>
+
+  <!-- Outer rings -->
+  <circle cx="340" cy="340" r="268" stroke="#3b82f6" stroke-width="1.5" fill="none" opacity="0.2"/>
+  <circle cx="340" cy="340" r="278" stroke="#22d3ee" stroke-width="0.8" fill="none" opacity="0.12"/>
+</svg>

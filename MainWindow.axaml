@@ -1,0 +1,326 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="KalkulatorIP.MainWindow"
+        Title="Kalkulator IP — ebTech 2026"
+        Icon="avares://KalkulatorIP/ikona.ico"
+        Width="960" Height="720"
+        MinWidth="720" MinHeight="520"
+        WindowStartupLocation="CenterScreen"
+        Background="#0D1117">
+
+  <Window.Styles>
+
+    <!-- ── Card ─────────────────────────────────────────────── -->
+    <Style Selector="Border.card">
+      <Setter Property="Background"        Value="#161B22"/>
+      <Setter Property="BorderBrush"       Value="#30363D"/>
+      <Setter Property="BorderThickness"   Value="1"/>
+      <Setter Property="CornerRadius"      Value="10"/>
+      <Setter Property="Padding"           Value="20"/>
+    </Style>
+
+    <!-- ── Info card ─────────────────────────────────────────── -->
+    <Style Selector="Border.info-card">
+      <Setter Property="Background"        Value="#161B22"/>
+      <Setter Property="BorderBrush"       Value="#30363D"/>
+      <Setter Property="BorderThickness"   Value="1"/>
+      <Setter Property="CornerRadius"      Value="8"/>
+      <Setter Property="Padding"           Value="14,12"/>
+      <Setter Property="MinWidth"          Value="190"/>
+      <Setter Property="Margin"            Value="0,0,12,12"/>
+    </Style>
+    <Style Selector="Border.info-card:pointerover">
+      <Setter Property="BorderBrush" Value="#58A6FF"/>
+    </Style>
+
+    <!-- ── Labels ────────────────────────────────────────────── -->
+    <Style Selector="TextBlock.label">
+      <Setter Property="Foreground" Value="#8B949E"/>
+      <Setter Property="FontSize"   Value="10"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <!-- ── Monospace value ───────────────────────────────────── -->
+    <Style Selector="TextBlock.value">
+      <Setter Property="Foreground"   Value="#E6EDF3"/>
+      <Setter Property="FontSize"     Value="17"/>
+      <Setter Property="FontWeight"   Value="SemiBold"/>
+      <Setter Property="FontFamily"   Value="Consolas,'Courier New',monospace"/>
+    </Style>
+
+    <!-- ── Input TextBox ─────────────────────────────────────── -->
+    <Style Selector="TextBox.input">
+      <Setter Property="Background"       Value="#0D1117"/>
+      <Setter Property="Foreground"       Value="#E6EDF3"/>
+      <Setter Property="BorderBrush"      Value="#30363D"/>
+      <Setter Property="BorderThickness"  Value="1"/>
+      <Setter Property="CornerRadius"     Value="6"/>
+      <Setter Property="Padding"          Value="10,8"/>
+      <Setter Property="FontFamily"       Value="Consolas,'Courier New',monospace"/>
+      <Setter Property="FontSize"         Value="15"/>
+      <Setter Property="CaretBrush"       Value="#58A6FF"/>
+    </Style>
+    <Style Selector="TextBox.input:focus /template/ Border#PART_BorderElement">
+      <Setter Property="BorderBrush" Value="#58A6FF"/>
+    </Style>
+
+    <!-- ── Primary button ────────────────────────────────────── -->
+    <Style Selector="Button.primary">
+      <Setter Property="Background"  Value="#1F6FEB"/>
+      <Setter Property="Foreground"  Value="White"/>
+      <Setter Property="FontWeight"  Value="SemiBold"/>
+      <Setter Property="FontSize"    Value="14"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="Padding"     Value="24,10"/>
+      <Setter Property="Cursor"      Value="Hand"/>
+    </Style>
+    <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+      <Setter Property="Background" Value="#388BFD"/>
+    </Style>
+    <Style Selector="Button.primary:pressed /template/ ContentPresenter">
+      <Setter Property="Background" Value="#1158C7"/>
+    </Style>
+
+    <!-- ── Link button ───────────────────────────────────────── -->
+    <Style Selector="Button.link">
+      <Setter Property="Background"        Value="Transparent"/>
+      <Setter Property="Foreground"        Value="#58A6FF"/>
+      <Setter Property="FontSize"          Value="13"/>
+      <Setter Property="Padding"           Value="0"/>
+      <Setter Property="Cursor"            Value="Hand"/>
+      <Setter Property="BorderThickness"   Value="0"/>
+    </Style>
+    <Style Selector="Button.link:pointerover /template/ ContentPresenter">
+      <Setter Property="Background"  Value="Transparent"/>
+      <Setter Property="Foreground"  Value="#88C4FF"/>
+    </Style>
+
+    <!-- ── Expander ───────────────────────────────────────────── -->
+    <Style Selector="Expander">
+      <Setter Property="Background"       Value="#0D1117"/>
+      <Setter Property="BorderBrush"      Value="#21262D"/>
+      <Setter Property="BorderThickness"  Value="1"/>
+      <Setter Property="Padding"          Value="12,10"/>
+    </Style>
+
+  </Window.Styles>
+
+  <!-- ══════════════════════════════════════════════════════════
+       ROOT
+       ══════════════════════════════════════════════════════════ -->
+  <DockPanel>
+
+    <!-- ── Header ──────────────────────────────────────────────── -->
+    <Border DockPanel.Dock="Top"
+            Background="#161B22"
+            BorderBrush="#30363D" BorderThickness="0,0,0,1"
+            Padding="28,18">
+      <DockPanel>
+        <StackPanel DockPanel.Dock="Left">
+          <TextBlock Text="KALKULATOR IP"
+                     FontSize="22" FontWeight="Bold"
+                     Foreground="#58A6FF" />
+          <TextBlock Text="Obliczanie parametrów sieci IPv4"
+                     FontSize="12" Foreground="#8B949E" Margin="0,3,0,0"/>
+        </StackPanel>
+      </DockPanel>
+    </Border>
+
+    <!-- ── Footer ──────────────────────────────────────────────── -->
+    <Border DockPanel.Dock="Bottom"
+            Background="#161B22"
+            BorderBrush="#30363D" BorderThickness="0,1,0,0"
+            Padding="28,12">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="4">
+        <TextBlock Text="© 2026  |  Powered by"
+                   Foreground="#6E7681" VerticalAlignment="Center" FontSize="12"/>
+        <Button x:Name="EbtechLink" Classes="link"
+                Content="www.ebtech.pl"
+                Click="EbtechLink_Click"
+                FontSize="12"
+                VerticalAlignment="Center"/>
+      </StackPanel>
+    </Border>
+
+    <!-- ── Content ─────────────────────────────────────────────── -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Spacing="16" Margin="28,22,28,22">
+
+        <!-- ─── Input card ──────────────────────────────────────── -->
+        <Border Classes="card">
+          <StackPanel Spacing="0">
+            <Grid ColumnDefinitions="*,16,*,16,Auto">
+
+              <StackPanel Grid.Column="0" Spacing="6">
+                <TextBlock Text="ADRES IP" Classes="label"/>
+                <TextBox x:Name="IpTextBox" Classes="input"
+                         Watermark="np. 192.168.1.0  lub  10.0.0.0/8"
+                         KeyDown="Input_KeyDown"/>
+              </StackPanel>
+
+              <StackPanel Grid.Column="2" Spacing="6">
+                <TextBlock Text="MASKA  (CIDR lub dziesiętna)" Classes="label"/>
+                <TextBox x:Name="MaskTextBox" Classes="input"
+                         Watermark="np. 24  lub  255.255.255.0"
+                         KeyDown="Input_KeyDown"/>
+              </StackPanel>
+
+              <Button Grid.Column="4"
+                      Classes="primary"
+                      Content="OBLICZ"
+                      VerticalAlignment="Bottom"
+                      Click="Calculate_Click"/>
+            </Grid>
+
+            <!-- Error -->
+            <Border x:Name="ErrorBorder"
+                    IsVisible="False"
+                    Background="#2D1117"
+                    BorderBrush="#F85149" BorderThickness="1"
+                    CornerRadius="6" Padding="12,8"
+                    Margin="0,14,0,0">
+              <TextBlock x:Name="ErrorText"
+                         Foreground="#F85149"
+                         TextWrapping="Wrap" FontSize="13"/>
+            </Border>
+          </StackPanel>
+        </Border>
+
+        <!-- ─── Results ─────────────────────────────────────────── -->
+        <StackPanel x:Name="ResultsPanel" IsVisible="False" Spacing="16">
+
+          <!-- Summary card -->
+          <Border Classes="card">
+            <Grid ColumnDefinitions="Auto,1,*">
+
+              <StackPanel Grid.Column="0" Spacing="4" Margin="0,0,24,0">
+                <TextBlock Text="SIEĆ" Classes="label"/>
+                <TextBlock x:Name="NetworkSummaryText"
+                           FontFamily="Consolas,'Courier New',monospace"
+                           FontSize="26" FontWeight="Bold" Foreground="#58A6FF"/>
+                <TextBlock x:Name="MaskSummaryText"
+                           FontFamily="Consolas,'Courier New',monospace"
+                           FontSize="12" Foreground="#8B949E"/>
+              </StackPanel>
+
+              <Rectangle Grid.Column="1" Fill="#30363D" Width="1" Margin="0,4"/>
+
+              <Grid Grid.Column="2" Margin="24,0,0,0"
+                    ColumnDefinitions="*,*,*" RowDefinitions="Auto,8,Auto">
+
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                  <TextBlock Text="KLASA SIECI" Classes="label" Margin="0,0,0,4"/>
+                  <TextBlock x:Name="ClassText"
+                             FontSize="20" FontWeight="Bold" Foreground="#3FB950"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                  <TextBlock Text="DOSTĘPNYCH HOSTÓW" Classes="label" Margin="0,0,0,4"/>
+                  <TextBlock x:Name="UsableHostsText"
+                             FontSize="20" FontWeight="Bold" Foreground="#E6EDF3"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Grid.Row="0">
+                  <TextBlock Text="WSZYSTKICH ADRESÓW" Classes="label" Margin="0,0,0,4"/>
+                  <TextBlock x:Name="TotalHostsText"
+                             FontSize="20" FontWeight="Bold" Foreground="#E6EDF3"/>
+                </StackPanel>
+
+                <TextBlock Grid.Column="0" Grid.Row="2"
+                           Text="MASKA BINARNA" Classes="label" Margin="0,0,0,4"/>
+                <TextBlock x:Name="BinaryMaskText"
+                           Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"
+                           FontFamily="Consolas,'Courier New',monospace"
+                           FontSize="12" Foreground="#8B949E"
+                           VerticalAlignment="Center"/>
+              </Grid>
+
+            </Grid>
+          </Border>
+
+          <!-- Info cards -->
+          <WrapPanel Orientation="Horizontal">
+
+            <Border Classes="info-card">
+              <StackPanel Spacing="6">
+                <TextBlock Text="ADRES SIECI" Classes="label"/>
+                <TextBlock x:Name="NetworkText" Classes="value" Foreground="#58A6FF"/>
+              </StackPanel>
+            </Border>
+
+            <Border Classes="info-card">
+              <StackPanel Spacing="6">
+                <TextBlock Text="ROZGŁOSZENIOWY (BROADCAST)" Classes="label"/>
+                <TextBlock x:Name="BroadcastText" Classes="value" Foreground="#D29922"/>
+              </StackPanel>
+            </Border>
+
+            <Border Classes="info-card">
+              <StackPanel Spacing="6">
+                <TextBlock Text="PIERWSZY HOST (MIN)" Classes="label"/>
+                <TextBlock x:Name="MinHostText" Classes="value" Foreground="#3FB950"/>
+              </StackPanel>
+            </Border>
+
+            <Border Classes="info-card">
+              <StackPanel Spacing="6">
+                <TextBlock Text="OSTATNI HOST (MAX)" Classes="label"/>
+                <TextBlock x:Name="MaxHostText" Classes="value" Foreground="#3FB950"/>
+              </StackPanel>
+            </Border>
+
+            <Border Classes="info-card">
+              <StackPanel Spacing="6">
+                <TextBlock Text="MASKA PODSIECI" Classes="label"/>
+                <TextBlock x:Name="SubnetMaskText" Classes="value"/>
+              </StackPanel>
+            </Border>
+
+            <Border Classes="info-card">
+              <StackPanel Spacing="6">
+                <TextBlock Text="MASKA WILDCARD" Classes="label"/>
+                <TextBlock x:Name="WildcardText" Classes="value" Foreground="#8B949E"/>
+              </StackPanel>
+            </Border>
+
+          </WrapPanel>
+
+          <!-- ─── Subnets card ──────────────────────────────────── -->
+          <Border Classes="card">
+            <StackPanel Spacing="14">
+
+              <!-- Header row -->
+              <DockPanel>
+                <TextBlock Text="MOŻLIWE PODSIECI"
+                           FontSize="14" FontWeight="SemiBold" Foreground="#E6EDF3"
+                           VerticalAlignment="Center"/>
+                <TextBlock x:Name="SubnetCountText"
+                           Foreground="#8B949E" Margin="8,0,0,0" FontSize="13"
+                           VerticalAlignment="Center"/>
+              </DockPanel>
+
+              <!-- Column labels -->
+              <Border Background="#0D1117" CornerRadius="4" Padding="12,7">
+                <Grid ColumnDefinitions="72,100,110,*">
+                  <TextBlock Grid.Column="0" Text="PREFIKS"     Classes="label"/>
+                  <TextBlock Grid.Column="1" Text="PODSIECI"    Classes="label"/>
+                  <TextBlock Grid.Column="2" Text="HOSTY/SIEĆ"  Classes="label"/>
+                  <TextBlock Grid.Column="3" Text="MASKA"       Classes="label"/>
+                </Grid>
+              </Border>
+
+              <!-- Dynamic subnet rows -->
+              <StackPanel x:Name="SubnetsContainer" Spacing="2"/>
+
+            </StackPanel>
+          </Border>
+
+        </StackPanel>
+        <!-- /ResultsPanel -->
+
+      </StackPanel>
+    </ScrollViewer>
+
+  </DockPanel>
+</Window>
