@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KalkulatorIP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d041030f9176f0595e2d98616590f02f83047278")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ad328fb71a160f2eebf92898f587739530daa5b")]
 [assembly: System.Reflection.AssemblyProductAttribute("KalkulatorIP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KalkulatorIP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
